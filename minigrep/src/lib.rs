@@ -12,7 +12,7 @@ pub struct Config {
 impl Config {
     pub fn new(args: &[String]) -> Result<Config, &'static str> {
         if args.len() < 3 {
-            return Err("Not enough arguments!"); 
+            return Err("Not enough arguments!");
         }
         let query = args[1].clone();
         let filename = args[2].clone();
@@ -32,13 +32,13 @@ pub fn run(config: Config) -> Result<(), Box<Error>>{
     // println!("With text:\n{}", contents);
 
     let results = if config.case_sensitive {
-        search(&config.query, &contents) 
+        search(&config.query, &contents)
     } else {
-        search_case_insensitive(&config.query, &contents) 
+        search_case_insensitive(&config.query, &contents)
     };
 
     for line in results {
-        println!("{}", line); 
+        println!("{}", line);
     }
 
     Ok(())
@@ -101,6 +101,5 @@ Trust me.";
             vec!["Rust:", "Trust me."],
             search_case_insensitive(query, contents)
         );
-   
     }
 }
